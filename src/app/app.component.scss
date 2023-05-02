@@ -1,0 +1,759 @@
+:root {
+  --webColor: #fff;
+}
+
+.header {
+  // position: absolute;
+  height: 50px;
+  width: 100%;
+  background-color: #4A638E;
+  z-index: 2;
+
+  .menu {
+    height: 100%;
+    width: 50px;
+    border: none;
+    color: white;
+    background-color: transparent;
+    font-size: 24px;
+    cursor: pointer;
+
+    .fa-cog:hover {
+      transition: 1s;
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.themeMenu {
+  display: none;
+  position: absolute;
+  list-style: none;
+  background-color: #718cb9;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  opacity: 0;
+  transform: translateY(-100%);
+  z-index: 1;
+
+  li {
+    border: solid 1px #fff;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #272727;
+  }
+}
+
+.themeMenu.active {
+  display: inline;
+  transition: all ease-in-out .5s;
+  opacity: 100%;
+  transform: translate(0%);
+}
+
+.body {
+  display: grid;
+  height: 100vh;
+  width: 100%;
+  grid-template-rows: repeat(5, min-content);
+  grid-template-columns: repeat(5, min-content);
+  grid-auto-flow: column;
+}
+
+.gridBlock {
+  display: block;
+  border: solid 1px rgb(194, 194, 194);
+  width: 380px;
+  height: 180px;
+  padding: 5px;
+}
+
+.splitgridBlock {
+  display: grid;
+  border: solid 1px rgb(194, 194, 194);
+  width: 380px;
+  height: 180px;
+  padding: 5px;
+  grid-template-rows: repeat(2, max-content);
+  grid-template-columns: repeat(2, max-content);
+}
+
+/*#region Dropdown*/
+
+.dropdown {
+  position: absolute;
+  width: 150px;
+  height: 30px;
+  box-sizing: border-box;
+  color: #fff;
+  margin-left: 25px;
+}
+
+.dropdown::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: solid 2px #fff;
+  right: 10px;
+  top: 8px;
+  z-index: 10000;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.dropdown.active::before {
+  top: 11px;
+  transform: rotate(-225deg);
+}
+
+.dropdown input {
+  background-color: #5677B0;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: solid 1px #fff;
+  outline: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  border-radius: 5px;
+}
+
+::placeholder {
+  color: white;
+}
+
+.dropdown .option {
+  display: none;
+  position: absolute;
+  top: 31px;
+  width: 100%;
+  background-color: #5677B0;
+  border: solid 1px white;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.dropdown.active .option {
+  display: block;
+  z-index: 99;
+}
+
+.dropdown .option div {
+  padding: 12px 20px;
+
+  i {
+    padding-right: 5px;
+  }
+}
+
+.dropdown.active .option div {
+  cursor: pointer;
+}
+
+.dropdown .option div:hover {
+  background-color: #718cb9;
+  color: #fff;
+}
+
+/*#endregion Dropdown*/
+
+.gridBlock p {
+  color: #fff;
+  margin-left: 30px;
+  width: fit-content;
+}
+
+
+label {
+  margin: 15px 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+
+  /*#region checked*/
+
+  input[type="checkbox"] {
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    height: 15px;
+    width: 15px;
+    padding: 2px;
+    border: solid 1px #fff;
+    border-radius: 2px;
+    transition: 0.3s all ease-in-out;
+  }
+
+  input[type="checkbox"]::before {
+    position: absolute;
+    content: '\2713';
+    font-size: 20px;
+    line-height: 3px;
+    color: #fff;
+    transform: scale(0);
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+}
+
+/*#endregion checked*/
+
+/*#region DatePicker*/
+input[type="date"] {
+  margin: 10px;
+  appearance: none;
+  background-color: #718cb9;
+  color: #fff;
+  border: solid 1px #fff;
+  outline: none;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/*#endregion DatePicker*/
+
+/*#region RadioButton*/
+.radio {
+  padding: 15px;
+
+  label {
+    display: inline-block;
+    margin: 3px;
+  }
+
+  input[type="radio"] {
+    background-color: #718cb9;
+  }
+}
+
+/*#endregion DatePicker*/
+
+/*#region TextArea*/
+.text {
+  padding: 5px;
+  appearance: none;
+  width: 200px;
+  height: 100px;
+  margin: 15px;
+  background-color: #718cb9;
+  border: solid 1px #fff;
+  color: #fff;
+}
+
+/*#endregion  TextArea*/
+
+/*#region InputNumber*/
+
+input[type="number"] {
+  margin-left: 15px;
+  background-color: #718cb9;
+  border: solid 1px #fff;
+  color: #fff;
+}
+
+/*#endregion  InputNumber*/
+
+/*#region Buttons*/
+
+.icoDesc {
+  position: relative;
+  color: white;
+  // background-color: #20A52A;
+  background-color: var(--wbColor);
+  height: 50px;
+  width: 50px;
+  border: none;
+
+  i {
+    padding: 2px;
+    font-size: 25px;
+  }
+}
+
+.buttonContainer {
+  margin: 15px;
+  padding: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  content: '';
+  background-color: rgba(0, 0, 0, .5);
+  width: 200px;
+  height: 50px;
+
+  span {
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    top: 30%;
+    left: 20px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+  }
+}
+
+.squareButton {
+  margin: 15px;
+  width: 150px;
+  height: 50Px;
+  background-color: #228B22;
+  border-radius: 5px;
+  border: solid 1px #ffffff;
+  color: white;
+  font-size: 18px;
+}
+
+.squareShadowButton {
+  margin-top: 15px;
+  width: 150px;
+  height: 50Px;
+  background-color: #228B22;
+  border-radius: 5px;
+  color: white;
+  border: solid 1px #ffffff;
+  font-size: 18px;
+  box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.sqrRoundButton {
+  margin: 15px;
+  width: 150px;
+  height: 50Px;
+  background-color: #228B22;
+  border-radius: 30px;
+  border: solid 1px #ffffff;
+  color: white;
+  font-size: 18px;
+}
+
+.borderSquareButton {
+  margin: 15px;
+  width: 150px;
+  height: 50Px;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #228B22;
+  border: solid 4px #228B22;
+  font-size: 20px;
+}
+
+.borderRoundedButton {
+  margin: 15px;
+  width: 150px;
+  height: 50Px;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #228B22;
+  border: solid 4px #228B22;
+  font-size: 20px;
+  border-radius: 30px;
+}
+
+.gradientButton {
+  margin: 15px;
+  width: 150px;
+  height: 50Px;
+  background: rgb(0, 204, 15);
+  background: linear-gradient(90deg, rgba(0, 204, 15, 1) 0%, rgba(0, 106, 14, 1) 100%);
+  border-radius: 5px;
+  border: solid 1px #00c210;
+  color: white;
+  font-size: 18px;
+}
+
+.gradientIconButton {
+  margin: 15px;
+  width: 150px;
+  height: 50Px;
+  background: rgb(0, 204, 15);
+  background: linear-gradient(90deg, rgba(0, 204, 15, 1) 0%, rgba(0, 106, 14, 1) 100%);
+  border-radius: 5px;
+  border: solid 1px #00c210;
+  color: white;
+  font-size: 18px;
+
+  i {
+    font-size: 22px;
+    margin-right: 12px;
+  }
+}
+
+/*#region RoundedButtons*/
+.darkGradientButton {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: linear-gradient(135deg, rgba(34, 139, 34, 1) 70%, rgba(34, 139, 34, 1) 70%, rgba(30, 184, 30, 1) 70%);
+  border: solid 1px #00c210;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.solidDarkButton {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: #228B22;
+  border: solid 1px #00c210;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.darkGradientButton {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: linear-gradient(135deg, rgba(34, 139, 34, 1) 70%, rgba(34, 139, 34, 1) 70%, rgba(30, 184, 30, 1) 70%);
+  border: solid 1px #00c210;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.GradientLightButton {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: linear-gradient(135deg, rgba(30, 184, 30, 1) 70%, rgba(30, 184, 30, 1) 70%, rgba(34, 139, 34, 1) 70%);
+  border: solid 1px #00c210;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.solidLightButton {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: #00c210;
+  border: solid 1px #00c210;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+/*#endregion  RoundedButtons*/
+/*#region SquareButtons*/
+.sqrGradientLight {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: linear-gradient(135deg, rgba(30, 184, 30, 1) 70%, rgba(30, 184, 30, 1) 70%, rgba(34, 139, 34, 1) 70%);
+  border: solid 1px #00c210;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.sqrSolidLight {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: #00c210;
+  border: solid 1px #00c210;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.sqrGradientDark {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: linear-gradient(135deg, rgba(34, 139, 34, 1) 70%, rgba(34, 139, 34, 1) 70%, rgba(30, 184, 30, 1) 70%);
+  border: solid 1px #00c210;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+.sqrSolidDark {
+  position: relative;
+  width: 170px;
+  height: 50Px;
+  margin: 10px;
+  background: #228B22;
+  border: solid 1px #00c210;
+  color: white;
+  font-size: 16px;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: #037403;
+    margin: 3px;
+    font-size: 25px;
+  }
+}
+
+/*#endregion SquareButtons*/
+/*#region CircleButtons*/
+.circleGradientDark {
+  margin: 15px;
+  position: relative;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px #20A52A;
+  color: #fff;
+  font-size: 25px;
+  background: #228B22;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 3px 1px 1px rgba(0, 100, 5, 0.61);
+}
+
+.circleGradientDark::after {
+  background-color: #1FB71F;
+  content: '';
+  height: 50%;
+  width: 15%;
+  right: 18%;
+  top: 0%;
+  position: absolute;
+  border-radius: 50%;
+  transform: rotate(130deg);
+}
+
+.circleSolidDark {
+  margin: 15px;
+  position: relative;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px #20A52A;
+  color: #fff;
+  font-size: 25px;
+  background: #228B22;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 3px 1px 1px rgba(0, 100, 5, 0.61);
+}
+
+.circleGradientLight {
+  margin: 15px;
+  position: relative;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px #20A52A;
+  color: #fff;
+  font-size: 25px;
+  background: #12DE34;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 3px 1px 1px rgba(0, 100, 5, 0.61);
+}
+
+.circleGradientLight::after {
+  background-color: #1FB71F;
+  content: '';
+  height: 50%;
+  width: 15%;
+  right: 18%;
+  top: 0%;
+  position: absolute;
+  border-radius: 50%;
+  transform: rotate(130deg);
+}
+
+.circleSolidLight {
+  margin: 15px;
+  position: relative;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 1px #20A52A;
+  color: #fff;
+  font-size: 25px;
+  background: #12DE34;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  box-shadow: 0 3px 1px 1px rgba(0, 100, 5, 0.61);
+}
+
+/*#endregion CircleButtons*/
+/*#region iconButtons*/
+.iconButton {
+  width: 50px;
+  height: 60px;
+  background: none;
+  border: none;
+  color: #fff;
+  margin: 5px;
+  vertical-align: top;
+  color: #fff;
+
+  i {
+    margin: 5px;
+    color: #fff;
+    font-size: 30px;
+
+  }
+}
+
+/*#endregion iconButtons*/
+
+/*#endregion  Buttons*/
