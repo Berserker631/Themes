@@ -1,13 +1,17 @@
 :root {
-  --webColor: #fff;
+  --darkBody: #272727;
+  --systemBlue: #1CA8DD;
+  --darkSysBlue: #1997C6;
+  --base: #2A2A2A;
+  --font: #DEDEDE;
 }
 
 .header {
-  // position: absolute;
   height: 50px;
   width: 100%;
   background-color: #4A638E;
   z-index: 2;
+  transition: all ease-in-out 1s;
 
   .menu {
     height: 100%;
@@ -25,31 +29,41 @@
   }
 }
 
-.themeMenu {
+.header.themeDark {
+  background-color: #272727;
+}
+
+.header.themeDarkBlue {
+  background-color: #1b1b1b;
+}
+
+.content .themeOptions {
   display: none;
   position: absolute;
   list-style: none;
   background-color: #718cb9;
   margin: 0;
   padding: 0;
-  width: 15%;
-  opacity: 0;
+  width: 150px;
   transform: translateY(-100%);
-  z-index: 1;
+  z-index: 2;
+  border-radius: 15px;
+  overflow: hidden;
+  border: solid 2px #fff;
 
   li {
     border: solid 1px #fff;
-    padding: 5px;
+    padding: 15px;
     font-size: 18px;
     color: #fff;
     background-color: #272727;
+    cursor: pointer;
   }
 }
 
-.themeMenu.active {
+.content .themeOptions.active {
   display: inline;
   transition: all ease-in-out .5s;
-  opacity: 100%;
   transform: translate(0%);
 }
 
@@ -60,6 +74,17 @@
   grid-template-rows: repeat(5, min-content);
   grid-template-columns: repeat(5, min-content);
   grid-auto-flow: column;
+  transition: all ease-in-out 1s;
+
+}
+
+.body.themeDark {
+  background-color: #414141;
+}
+
+.body.themeDarkBlue {
+  background-color: #2A2A2A;
+  font-family: 'Roboto', sans-serif;
 }
 
 .gridBlock {
@@ -69,6 +94,7 @@
   height: 180px;
   padding: 5px;
 }
+
 
 .splitgridBlock {
   display: grid;
@@ -89,6 +115,38 @@
   box-sizing: border-box;
   color: #fff;
   margin-left: 25px;
+}
+
+.textBox.themeDark {
+  background-color: #272727;
+}
+
+.textBox.themeDarkBlue {
+  background-color: #2A2A2A;
+}
+
+.dropChoice.themeDark {
+  background-color: #272727;
+}
+
+.dropChoice.themeDarkBlue {
+  background-color: #2A2A2A;
+}
+
+.textBox {
+  background-color: #718cb9;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: solid 1px #fff;
+  outline: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  padding: 0;
+  border-radius: 5px;
 }
 
 .dropdown::before {
@@ -112,24 +170,12 @@
   transform: rotate(-225deg);
 }
 
-.dropdown input {
-  background-color: #5677B0;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  border: solid 1px #fff;
-  outline: none;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  padding: 0;
-  border-radius: 5px;
-}
-
 ::placeholder {
   color: white;
+}
+
+.option.themeDark {
+  background-color: #272727;
 }
 
 .dropdown .option {
@@ -137,18 +183,18 @@
   position: absolute;
   top: 31px;
   width: 100%;
-  background-color: #5677B0;
   border: solid 1px white;
   color: #fff;
   border-radius: 5px;
+  background-color: #718cb9;
 }
 
 .dropdown.active .option {
   display: block;
-  z-index: 99;
+  z-index: 2;
 }
 
-.dropdown .option div {
+.dropdown .dropChoice {
   padding: 12px 20px;
 
   i {
@@ -156,16 +202,15 @@
   }
 }
 
-.dropdown.active .option div {
+.dropdown.active .dropChoice {
   cursor: pointer;
 }
 
 .dropdown .option div:hover {
-  background-color: #718cb9;
+  background-color: rgba($color: #fff, $alpha: 0.5);
   color: #fff;
+  z-index: 3;
 }
-
-/*#endregion Dropdown*/
 
 .gridBlock p {
   color: #fff;
@@ -173,6 +218,9 @@
   width: fit-content;
 }
 
+/*#endregion Dropdown*/
+
+/*#region checked*/
 
 label {
   margin: 15px 30px;
@@ -180,7 +228,6 @@ label {
   display: flex;
   align-items: center;
 
-  /*#region checked*/
 
   input[type="checkbox"] {
     appearance: none;
@@ -214,7 +261,11 @@ label {
 /*#endregion checked*/
 
 /*#region DatePicker*/
-input[type="date"] {
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.date {
   margin: 10px;
   appearance: none;
   background-color: #718cb9;
@@ -225,8 +276,12 @@ input[type="date"] {
   border-radius: 3px;
 }
 
-::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+.date.themeDark {
+  background-color: #272727;
+}
+
+.date.themeDarkBlue {
+  background-color: #2A2A2A;
 }
 
 /*#endregion DatePicker*/
@@ -248,6 +303,14 @@ input[type="date"] {
 /*#endregion DatePicker*/
 
 /*#region TextArea*/
+.text.themeDark {
+  background-color: #272727;
+}
+
+.text.themeDarkBlue {
+  background-color: #2A2A2A;
+}
+
 .text {
   padding: 5px;
   appearance: none;
@@ -263,11 +326,19 @@ input[type="date"] {
 
 /*#region InputNumber*/
 
-input[type="number"] {
+.inputNumber {
   margin-left: 15px;
   background-color: #718cb9;
   border: solid 1px #fff;
   color: #fff;
+}
+
+.inputNumber.themeDark {
+  background-color: #272727;
+}
+
+.inputNumber.themeDarkBlue {
+  background-color: #2A2A2A;
 }
 
 /*#endregion  InputNumber*/
@@ -277,8 +348,8 @@ input[type="number"] {
 .icoDesc {
   position: relative;
   color: white;
-  // background-color: #20A52A;
-  background-color: var(--wbColor);
+  background-color: #20A52A;
+  // background-color: var(--wbColor);
   height: 50px;
   width: 50px;
   border: none;
@@ -289,6 +360,11 @@ input[type="number"] {
   }
 }
 
+.icoDesc.themeDarkBlue {
+  background-color: #1CA8DD;
+  color: #DEDEDE;
+}
+
 .buttonContainer {
   margin: 15px;
   padding: 0;
@@ -296,7 +372,7 @@ input[type="number"] {
   top: 0;
   left: 0;
   content: '';
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(15, 15, 15, 0.5);
   width: 200px;
   height: 50px;
 
@@ -323,6 +399,11 @@ input[type="number"] {
   font-size: 18px;
 }
 
+.squareButton.themeDarkBlue {
+  background-color: #1CA8DD;
+  color: #DEDEDE;
+}
+
 .squareShadowButton {
   margin-top: 15px;
   width: 150px;
@@ -333,6 +414,11 @@ input[type="number"] {
   border: solid 1px #ffffff;
   font-size: 18px;
   box-shadow: 3px 3px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.squareShadowButton.themeDarkBlue {
+  background-color: #1CA8DD;
+  color: #DEDEDE;
 }
 
 .sqrRoundButton {
@@ -346,6 +432,11 @@ input[type="number"] {
   font-size: 18px;
 }
 
+.sqrRoundButton.themeDarkBlue {
+  background-color: #1CA8DD;
+  color: #DEDEDE;
+}
+
 .borderSquareButton {
   margin: 15px;
   width: 150px;
@@ -355,6 +446,16 @@ input[type="number"] {
   color: #228B22;
   border: solid 4px #228B22;
   font-size: 20px;
+}
+
+.borderSquareButton.themeDarkBlue {
+  border-color: #1997C6;
+  color: #DEDEDE;
+}
+
+.borderRoundedButton.themeDarkBlue {
+  border-color: #1CA8DD;
+  color: #DEDEDE;
 }
 
 .borderRoundedButton {
@@ -398,6 +499,17 @@ input[type="number"] {
   }
 }
 
+.gradientButton.themeDarkBlue {
+  background: linear-gradient(90deg, #1CA8DD 0%, #006bc2 100%);
+  border-color: #006bc2;
+}
+
+.gradientIconButton.themeDarkBlue {
+  background: linear-gradient(90deg, #1CA8DD 0%, #006bc2 100%);
+  border-color: #006bc2;
+  color: #DEDEDE;
+}
+
 /*#region RoundedButtons*/
 .darkGradientButton {
   position: relative;
@@ -424,6 +536,11 @@ input[type="number"] {
     margin: 3px;
     font-size: 25px;
   }
+}
+
+.darkGradientButton.themeDarkBlue {
+  background: linear-gradient(135deg, #006bc2 70%, #1CA8DD 70%);
+  border: solid 1px #006bc2;
 }
 
 .solidDarkButton {
